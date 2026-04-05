@@ -1,0 +1,41 @@
+# Idara+ Mobile App Backend
+
+This repository contains the Flutter mobile app and a Node.js backend inside the `backend/` folder.
+
+## Backend setup
+
+1. Install backend dependencies:
+   ```bash
+   cd backend
+   npm install
+   ```
+2. Create the PostgreSQL database and tables:
+   ```bash
+   psql -U postgres -d idaraplus -f db_setup.sql
+   ```
+   - The database must exist before running this command.
+   - The `db_setup.sql` file creates the `users` table and required extensions.
+3. Configure backend environment variables:
+   - Copy or update `backend/.env` with your local values.
+   - The default values are already set for local development.
+4. Start the backend server:
+   ```bash
+   cd backend
+   npx nodemon src/index.js
+   ```
+
+## API endpoints
+
+- `POST /signup`
+  - Request body: `{ "email": "user@example.com", "password": "Secret123!", "role": "CITIZEN" }`
+- `POST /login`
+  - Request body: `{ "email": "user@example.com", "password": "Secret123!" }`
+- `GET /me`
+  - Request header: `Authorization: Bearer <token>`
+
+## Notes for team members
+
+- Run `npm install` inside `backend/` before starting the server.
+- Use `backend/.env` for local database and JWT configuration.
+- Ensure PostgreSQL is running on `localhost:5432` and the `idaraplus` database is created.
+- If you need to reset the database, rerun `psql -U postgres -d idaraplus -f db_setup.sql`.
