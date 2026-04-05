@@ -24,10 +24,24 @@ This repository contains the Flutter mobile app and a Node.js backend inside the
    npx nodemon src/index.js
    ```
 
+## Flutter App Setup
+
+1. Install Flutter dependencies:
+   ```bash
+   cd idaraplusflutter
+   flutter pub get
+   ```
+2. Run the app:
+   ```bash
+   flutter run
+   ```
+   - Ensure an emulator or device is connected.
+   - The app connects to the backend at `http://localhost:4000`.
+
 ## API endpoints
 
 - `POST /signup`
-  - Request body: `{ "email": "user@example.com", "password": "Secret123!", "role": "CITIZEN" }`
+  - Request body: `{ "email": "user@example.com", "password": "Secret123!", "role": "CITIZEN", "first_name": "John", "last_name": "Doe" }`
 - `POST /login`
   - Request body: `{ "email": "user@example.com", "password": "Secret123!" }`
 - `GET /me`
@@ -39,3 +53,4 @@ This repository contains the Flutter mobile app and a Node.js backend inside the
 - Use `backend/.env` for local database and JWT configuration.
 - Ensure PostgreSQL is running on `localhost:5432` and the `idaraplus` database is created.
 - If you need to reset the database, rerun `psql -U postgres -d idaraplus -f db_setup.sql`.
+- For the Flutter app, run `flutter pub get` and `flutter run` in `idaraplusflutter/`.
